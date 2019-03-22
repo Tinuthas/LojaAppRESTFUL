@@ -51,10 +51,24 @@ public class ProdutoBO {
 	}
 	
 	public void atualizar(ProdutoTO produto) {
+		for (ProdutoTO produtoTO : lista) {
+			if(produto.getCodigo() == produtoTO.getCodigo()) {
+				produtoTO.setTitulo(produto.getTitulo());
+				produtoTO.setQuantidade(produto.getQuantidade());
+				produtoTO.setPreco(produto.getPreco());
+				break;
+			}
+		}
 		ProdutoTO outro = buscar(produto.getCodigo());
 	}
 
 	public void remover(int codigo) {
+		for (ProdutoTO produtoTO : lista) {
+			if(produtoTO.getCodigo() == codigo) {
+				lista.remove(produtoTO);
+				break;
+			}
+		}
 		
 	}
 
